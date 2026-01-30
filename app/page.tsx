@@ -57,7 +57,7 @@ export default function Home() {
               </span>
             </motion.div>
 
-            {/* Cinematic Headline */}
+            {/* Cinematic Headline - UPDATED TO CYAN GRADIENT */}
             <motion.h1 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -109,8 +109,9 @@ export default function Home() {
                 <span className="w-8 h-[1px] bg-primary" />
                 <span className="text-primary font-mono text-xs uppercase tracking-widest">Core Infrastructure</span>
               </div>
+              {/* Section Heading - UPDATED TO CYAN ACCENT */}
               <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
-                Built for the <span className="italic text-slate-500">Future</span>
+                Built for the <span className="italic text-primary">Future</span>
               </h2>
             </div>
             <p className="text-slate-500 max-w-sm font-mono text-sm leading-relaxed">
@@ -148,7 +149,7 @@ export default function Home() {
             <div className="space-y-10">
               <div className="space-y-4">
                 <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">
-                  Why <span className="text-primary underline underline-offset-8 decoration-1">Nexe-Agent</span>?
+                  Why <span className="text-primary underline underline-offset-8 decoration-1 italic">Nexe-Agent</span>?
                 </h2>
                 <p className="text-slate-400 text-lg leading-relaxed">
                   We are not just developers. We are strategic partners who understand that
@@ -188,7 +189,6 @@ export default function Home() {
               <div className="relative aspect-square rounded-[3rem] bg-gradient-to-br from-white/10 to-transparent border border-white/10 p-1 flex items-center justify-center">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
                 <div className="w-full h-full rounded-[2.8rem] bg-[#050505] flex items-center justify-center relative overflow-hidden">
-                  {/* Rotating Tech Rings */}
                   <motion.div 
                     animate={{ rotate: 360 }}
                     transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
@@ -215,9 +215,10 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             className="max-w-3xl mx-auto space-y-8"
           >
+            {/* Final Heading - UPDATED TO CYAN UNDERLINE */}
             <h2 className="text-4xl md:text-7xl font-bold text-white tracking-tighter">
               READY TO BUILD <br />
-              <span className="text-slate-500 italic">INTELLIGENT?</span>
+              <span className="text-primary italic underline underline-offset-[12px] decoration-1">INTELLIGENT?</span>
             </h2>
             <p className="text-slate-400 text-lg max-w-xl mx-auto">
               Let us analyze your business and show you exactly how AI and automation
@@ -225,7 +226,7 @@ export default function Home() {
             </p>
             <div className="pt-8">
                 <Button variant="glow" size="xl" asChild className="rounded-full px-12 h-16 text-lg font-bold">
-                    <NextLink href="/contact" className="gap-3">
+                    <NextLink href="/contact" className="gap-3 text-black">
                         Get Your Free Audit <ArrowRight size={20} />
                     </NextLink>
                 </Button>

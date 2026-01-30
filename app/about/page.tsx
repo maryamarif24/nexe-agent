@@ -3,7 +3,6 @@
 import { Button } from '@/components/ui/button';
 import {
   ArrowRight,
-  Users,
   Sparkles,
   Brain,
   Code,
@@ -17,6 +16,7 @@ import {
 import Layout from '@/components/Layout';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Team from '@/components/Team';
 
 const stats = [
   { value: '50+', label: 'Projects Completed', code: 'EXEC_050' },
@@ -33,7 +33,7 @@ const values = [
   },
   {
     icon: Brain,
-    title: "Intelligent Design",
+    title: "Intelligent Design",    
     description: "Every system we build incorporates smart logic that adapts, learns, and improves over time.",
   },
   {
@@ -51,13 +51,11 @@ const values = [
 export default function AboutPage() {
   return (
     <Layout>
-      <div className="min-h-screen bg-[#020202] text-slate-300">
+      {/* FIXED: Changed bg-[#020202] to bg-transparent and min-h-screen to h-full min-h-screen to prevent cutting */}
+      <div className="h-full min-h-screen bg-transparent text-slate-300 pb-20">
 
         {/* --- HERO: SYSTEM BRIEFING --- */}
         <section className="relative pt-40 pb-24 overflow-hidden border-b border-white/5">
-          {/* Technical Grid Overlay */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]" />
-          
           <div className="container mx-auto px-6 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               <div className="lg:col-span-8">
@@ -77,7 +75,7 @@ export default function AboutPage() {
                   className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none mb-8"
                 >
                   Building the Future of <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/40 italic">
+                  <span className="text-primary italic">
                     Intelligent Business
                   </span>
                 </motion.h1>
@@ -94,9 +92,9 @@ export default function AboutPage() {
                 </motion.p>
               </div>
 
-              {/* Decorative Tech ID Sidebar */}
+              {/* Technical Sidebar */}
               <div className="hidden lg:block lg:col-span-4 border-l border-white/5 pl-12">
-                <div className="space-y-8 py-4 opacity-40 grayscale group-hover:grayscale-0 transition-all">
+                <div className="space-y-8 py-4 opacity-40">
                    <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">System_Parameters</div>
                    <div className="flex flex-col gap-1 text-xs font-mono">
                       <span>{'>'} AGENT_TYPE: HUMAN_AUGMENTATION</span>
@@ -110,13 +108,13 @@ export default function AboutPage() {
         </section>
 
         {/* --- STATS: DATA METRICS --- */}
-        <section className="py-20 bg-primary/[0.02] border-b border-white/5">
+        <section className="py-20 bg-primary/[0.02] border-b border-white/5 relative">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {stats.map((stat, index) => (
-                <div key={index} className="relative group p-6 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-primary/30 transition-all">
+                <div key={index} className="relative group p-6 rounded-2xl bg-[#020202]/40 backdrop-blur-sm border border-white/5 hover:border-primary/30 transition-all">
                   <div className="text-[10px] font-mono text-slate-500 mb-2">{stat.code}</div>
-                  <div className="text-4xl font-black text-white mb-1 group-hover:text-primary transition-colors">{stat.value}</div>
+                  <div className="text-4xl font-black text-primary mb-1 group-hover:text-primary transition-colors">{stat.value}</div>
                   <div className="text-xs text-slate-500 uppercase tracking-widest leading-tight">{stat.label}</div>
                 </div>
               ))}
@@ -128,10 +126,9 @@ export default function AboutPage() {
         <section className="py-32 relative">
           <div className="container mx-auto px-6">
             <div className="flex flex-col lg:flex-row items-center gap-20">
-              {/* Visual Box */}
               <div className="w-full lg:w-1/2 relative group">
-                <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full opacity-20 group-hover:opacity-30 transition-opacity" />
-                <div className="relative aspect-video rounded-3xl bg-[#050505] border border-white/10 p-12 overflow-hidden">
+                <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full opacity-20" />
+                <div className="relative aspect-video rounded-3xl bg-[#050505]/60 backdrop-blur-md border border-white/10 p-12 overflow-hidden">
                   <div className="absolute top-0 right-0 p-4 font-mono text-[10px] text-slate-600">MISSION_CONTROL</div>
                   <div className="flex flex-col items-center justify-center h-full space-y-6">
                     <div className="w-20 h-20 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center animate-pulse">
@@ -153,8 +150,7 @@ export default function AboutPage() {
                   <span className="text-primary">Increasing Efficiency</span>
                 </h2>
                 <p className="text-lg text-slate-400 leading-relaxed">
-                  We saw too many businesses drowning in repetitive tasks and outdated processes.
-                  Every hour spent on manual work is an hour not spent on innovation or customer relationships.
+                  We saw too many businesses drowning in repetitive tasks. Every hour spent on manual work is an hour not spent on innovation.
                 </p>
                 <div className="grid gap-4">
                   {[
@@ -175,10 +171,13 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* --- TEAM SECTION --- */}
+        <Team />
+
         {/* --- VALUES: SYSTEM GUIDELINES --- */}
-        <section className="py-32 bg-white/[0.02] border-y border-white/5">
+        <section className="py-32 relative border-y border-white/5">
           <div className="container mx-auto px-6">
-            <div className="max-w-xl mb-20 space-y-4">
+            <div className="max-w-xl mb-20 space-y-4 text-center lg:text-left">
               <h2 className="text-4xl font-bold text-white tracking-tight uppercase">
                 Core <span className="text-primary">Values</span>
               </h2>
@@ -191,7 +190,7 @@ export default function AboutPage() {
               {values.map((value, index) => (
                 <div
                   key={value.title}
-                  className="group relative p-8 rounded-2xl bg-black border border-white/5 hover:border-primary/40 transition-all duration-500"
+                  className="group relative p-8 rounded-2xl bg-[#020202]/40 backdrop-blur-sm border border-white/5 hover:border-primary/40 transition-all duration-500"
                 >
                   <div className="w-14 h-14 rounded-xl bg-primary/5 border border-primary/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                     <value.icon className="w-7 h-7 text-primary" />
@@ -221,7 +220,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <Button variant="glow" size="xl" asChild className="rounded-full px-12 h-16 text-lg font-bold">
-                <Link href="/contact" className="gap-3">
+                <Link href="/contact" className="gap-3 text-black">
                   Start a Conversation
                   <ArrowRight size={20} />
                 </Link>

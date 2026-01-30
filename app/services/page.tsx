@@ -48,14 +48,11 @@ const services = [
 export default function ServicesPage() {
   return (
     <Layout>
-      <div className="min-h-screen bg-[#020202] text-slate-300 selection:bg-primary/30">
+      {/* 1. FIXED CUTTING ISSUE: Changed min-h-screen to h-full/min-h-screen and removed bg-[#020202] */}
+      <div className="h-full min-h-screen bg-transparent text-slate-300 selection:bg-primary/30 pb-20">
         
         {/* --- HERO: ARCHITECTURAL OVERVIEW --- */}
         <section className="relative pt-40 pb-20 overflow-hidden border-b border-white/5">
-          {/* Subtle Grid & Scanline Effect */}
-          <div className="absolute inset-0 bg-[radial-gradient(#ffffff05_1px,transparent_1px)] bg-[size:32px_32px]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-
           <div className="container mx-auto px-6 relative z-10 text-center">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -67,13 +64,14 @@ export default function ServicesPage() {
                 <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-primary">Capabilities_v4.0</span>
               </div>
 
+              {/* 2. COLOR UPDATE: Applying the Electric Cyan/Green to the Heading */}
               <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-none mb-8">
-                OUR <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40 italic">SERVICES</span>
+                OUR <span className="text-primary italic">SERVICES</span>
               </h1>
               
               <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed font-light">
                 Comprehensive digital solutions designed to accelerate your business growth through
-                <span className="text-white font-medium"> intelligence and automation.</span>
+                <span className="text-primary font-medium"> intelligence and automation.</span>
               </p>
             </motion.div>
           </div>
@@ -86,9 +84,8 @@ export default function ServicesPage() {
               {services.map((service, index) => (
                 <div
                   key={index}
-                  className="group relative p-10 bg-[#020202] hover:bg-white/[0.02] transition-all duration-500 overflow-hidden"
+                  className="group relative p-10 bg-[#020202]/40 backdrop-blur-sm hover:bg-white/[0.02] transition-all duration-500 overflow-hidden"
                 >
-                  {/* Decorative Elements */}
                   <div className="absolute top-0 right-0 p-6 text-[10px] font-mono text-slate-700 group-hover:text-primary/40 transition-colors">
                     {service.id}
                   </div>
@@ -99,7 +96,8 @@ export default function ServicesPage() {
                     </div>
                     
                     <div className="space-y-3">
-                      <h3 className="text-2xl font-bold text-white tracking-tight group-hover:translate-x-1 transition-transform">
+                      {/* 3. COLOR UPDATE: Using Primary Cyan/Green for Titles */}
+                      <h3 className="text-2xl font-bold text-primary tracking-tight group-hover:translate-x-1 transition-transform">
                         {service.title}
                       </h3>
                       <p className="text-slate-500 text-sm leading-relaxed group-hover:text-slate-400 transition-colors">
@@ -118,25 +116,16 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* --- PARTNERSHIP DIRECTIVE: WHY NEXE-AGENT --- */}
-        <section className="py-32 bg-[#050505] border-y border-white/5 relative overflow-hidden">
-          {/* Animated Background Pulse */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
-          
+        {/* --- PARTNERSHIP DIRECTIVE --- */}
+        <section className="py-32 relative overflow-hidden">
           <div className="container mx-auto px-6 flex flex-col items-center text-center">
              <div className="max-w-4xl relative z-10">
-                <div className="flex justify-center mb-8">
-                  <Activity className="text-primary w-10 h-10 animate-pulse" />
-                </div>
-                
                 <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-8 leading-none">
                   Why <span className="text-primary italic">Nexe-Agent</span>?
                 </h2>
                 
                 <p className="text-slate-400 text-lg md:text-xl leading-relaxed mb-16 max-w-3xl mx-auto">
-                  We are not just developers. We are strategic partners who understand that
-                  technology should serve your business goals, not complicate them. Our team
-                  combines deep technical expertise with business acumen to deliver solutions
+                  We combine technical expertise with business acumen to deliver solutions
                   that drive real results.
                 </p>
 
@@ -158,35 +147,6 @@ export default function ServicesPage() {
                    ))}
                 </div>
              </div>
-          </div>
-        </section>
-
-        {/* --- CALL TO ACTION: FINAL HANDSHAKE --- */}
-        <section className="py-40 relative overflow-hidden text-center">
-          <div className="container mx-auto px-6 relative z-10">
-            <motion.div 
-              whileInView={{ opacity: [0, 1], y: [20, 0] }}
-              className="max-w-3xl mx-auto space-y-12"
-            >
-              <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase leading-[0.8]">
-                Ready to Build Something <br />
-                <span className="text-primary underline underline-offset-[12px] decoration-1">Intelligent?</span>
-              </h2>
-              
-              <p className="text-slate-500 font-mono text-sm uppercase tracking-[0.2em] max-w-xl mx-auto">
-                {"//"} Let us analyze your business and show you exactly how AI and automation 
-                can transform your operations.
-              </p>
-
-              <div className="pt-6">
-                <Button variant="glow" size="xl" asChild className="rounded-full px-12 h-16 text-lg font-bold shadow-[0_0_50px_rgba(var(--primary),0.2)]">
-                  <Link href="/contact" className="gap-3">
-                    Get Your Free Audit
-                    <ArrowRight size={20} />
-                  </Link>
-                </Button>
-              </div>
-            </motion.div>
           </div>
         </section>
       </div>

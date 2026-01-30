@@ -10,7 +10,6 @@ import {
   Mail, 
   MapPin, 
   Send, 
-  MessageSquare, 
   Clock, 
   Sparkles, 
   User, 
@@ -49,12 +48,11 @@ export default function ContactPage() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-[#020202] text-slate-300">
+      {/* 1. FIXED CUTTING: Changed min-h-screen to h-full min-h-screen & removed solid bg */}
+      <div className="h-full min-h-screen bg-transparent text-slate-300 pb-20">
         
         {/* --- HERO: UPLINK STATUS --- */}
         <section className="relative pt-40 pb-20 overflow-hidden border-b border-white/5">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]" />
-          
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-3xl">
               <motion.div 
@@ -66,9 +64,10 @@ export default function ContactPage() {
                 Communication_Channel_Secure
               </motion.div>
               
-              <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none mb-8">
+              {/* 2. COLOR UPDATE: Using Electric Cyan for the Heading accent */}
+              <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none mb-8 uppercase">
                 Let's Build Something <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/40 italic">Brilliant</span>
+                <span className="text-primary italic">Brilliant</span>
               </h1>
               
               <p className="text-xl text-slate-400 leading-relaxed font-light border-l-2 border-primary/20 pl-8">
@@ -88,10 +87,10 @@ export default function ContactPage() {
               {/* --- TRANSMISSION FORM --- */}
               <div className="lg:col-span-7 order-2 lg:order-1">
                 <div className="relative group">
-                  {/* Glowing Border Decor */}
                   <div className="absolute -inset-0.5 bg-gradient-to-b from-primary/20 to-transparent rounded-2xl blur opacity-50 group-hover:opacity-100 transition duration-1000" />
                   
-                  <div className="relative p-8 md:p-12 rounded-2xl bg-black border border-white/10 shadow-2xl">
+                  {/* 3. GLASSMORPHISM: Using semi-transparent background to show grid */}
+                  <div className="relative p-8 md:p-12 rounded-2xl bg-[#020202]/60 backdrop-blur-md border border-white/10 shadow-2xl">
                     <div className="flex justify-between items-center mb-10 border-b border-white/5 pb-6">
                        <div>
                           <h2 className="text-2xl font-bold text-white tracking-tight">Send Us a Message</h2>
@@ -179,7 +178,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* --- SIDEBAR: SYSTEM INFO --- */}
+              {/* --- SIDEBAR --- */}
               <div className="lg:col-span-5 order-1 lg:order-2 space-y-8">
                 <div className="space-y-10">
                   <h2 className="text-3xl font-bold text-white tracking-tight">
@@ -189,8 +188,8 @@ export default function ContactPage() {
                   <div className="space-y-8">
                     {[
                       { icon: Mail, title: "Email Us Directly", detail: "nexegent3@gmail.com", isLink: true },
-                      { icon: Clock, title: "Response Time", detail: "Latency: < 24 Hours (Business Days)", isLink: false },
-                      { icon: MapPin, title: "Global Reach", detail: "Distributed Network: Global Support", isLink: false }
+                      { icon: Clock, title: "Response Time", detail: "Latency: < 24 Hours", isLink: false },
+                      { icon: MapPin, title: "Global Reach", detail: "Distributed Network", isLink: false }
                     ].map((item, i) => (
                       <div key={i} className="flex gap-6 group">
                         <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center justify-center flex-shrink-0 group-hover:border-primary/30 transition-all duration-500">
@@ -218,8 +217,7 @@ export default function ContactPage() {
                   <div className="relative z-10">
                     <h3 className="text-xl font-black text-white uppercase tracking-tight mb-3 italic">Get a Free AI Audit</h3>
                     <p className="text-slate-400 text-sm leading-relaxed mb-8 font-light">
-                      Not sure where to start? Request a complimentary analysis of your 
-                      business operations and discover AI opportunities.
+                      Request a complimentary analysis of your business operations.
                     </p>
                     <Button variant="outline" className="w-full h-12 border-primary/40 text-primary hover:bg-primary hover:text-black font-bold uppercase tracking-tighter transition-all">
                       Request Free Audit
@@ -234,14 +232,15 @@ export default function ContactPage() {
         </section>
 
         {/* --- FOOTER BANNER --- */}
-        <section className="py-24 border-t border-white/5 bg-white/[0.01]">
+        <section className="py-24 border-t border-white/5">
           <div className="container mx-auto px-6 text-center">
             <motion.div 
               whileInView={{ opacity: [0, 1], y: [20, 0] }}
               className="max-w-3xl mx-auto space-y-6"
             >
+              {/* 4. COLOR UPDATE: Applying Electric Cyan accent */}
               <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase">
-                The Future Starts With a <span className="text-primary">Single Message</span>
+                The Future Starts With a <span className="text-primary italic">Single Message</span>
               </h2>
               <p className="text-slate-500 font-mono text-xs uppercase tracking-[0.3em]">
                 {"//"} Break the cycle of manual operations. Update your system today.

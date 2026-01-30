@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, Space_Grotesk } from 'next/font/google';
 import { Providers } from './providers';
+import CursorMotion from '@/components/CursorMotion';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -26,9 +27,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased min-h-screen bg-background`}
+        className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased min-h-screen bg-[#020202] text-slate-300`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          {/* Glowing Cursor Effect */}
+          <CursorMotion />
+          
+          {/* Main Content */}
+          <div className="relative z-10">
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );
