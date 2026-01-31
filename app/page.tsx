@@ -89,7 +89,7 @@ export default function Home() {
               className="flex flex-col sm:flex-row items-center gap-6"
             >
               <Button variant="glow" size="xl" asChild className="rounded-2xl px-10 h-16 text-lg font-bold shadow-[0_0_40px_rgba(var(--primary),0.3)]">
-                <NextLink href="/contact" className="gap-3">
+                <NextLink href="/audit" className="gap-3">
                   Get a Free Audit <ArrowRight size={20} />
                 </NextLink>
               </Button>
@@ -229,7 +229,7 @@ export default function Home() {
             </p>
             <div className="pt-8">
                 <Button variant="glow" size="xl" asChild className="rounded-full px-12 h-16 text-lg font-bold">
-                    <NextLink href="/contact" className="gap-3 text-black">
+                    <NextLink href="/audit" className="gap-3 text-black">
                         Get Your Free Audit <ArrowRight size={20} />
                     </NextLink>
                 </Button>

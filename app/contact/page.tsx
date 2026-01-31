@@ -5,20 +5,21 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from "@/hooks/use-toast";
-import { 
-  ArrowRight, 
-  Mail, 
-  MapPin, 
-  Send, 
-  Clock, 
-  Sparkles, 
-  User, 
+import {
+  ArrowRight,
+  Mail,
+  MapPin,
+  Send,
+  Clock,
+  Sparkles,
+  User,
   Briefcase,
   Terminal,
   ShieldCheck
 } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { motion } from 'framer-motion';
+import NextLink from 'next/link';
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -244,9 +245,11 @@ export default function ContactPage() {
                     <p className="text-slate-400 text-sm leading-relaxed mb-8 font-light">
                       Request a complimentary analysis of your business operations.
                     </p>
-                    <Button variant="outline" className="w-full h-12 border-primary/40 text-primary hover:bg-primary hover:text-black font-bold uppercase tracking-tighter transition-all">
-                      Request Free Audit
-                      <ArrowRight size={18} className="ml-2" />
+                    <Button variant="outline" asChild className="w-full h-12 border-primary/40 text-primary hover:bg-primary hover:text-black font-bold uppercase tracking-tighter transition-all">
+                      <NextLink href="/audit">
+                        Request Free Audit
+                        <ArrowRight size={18} className="ml-2" />
+                      </NextLink>
                     </Button>
                   </div>
                 </div>
