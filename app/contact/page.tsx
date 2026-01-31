@@ -33,13 +33,41 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    toast({
-      title: "Transmission Received",
-      description: "Data packet successfully sent. Response scheduled within 24 hours.",
-    });
-    setFormData({ name: "", email: "", company: "", message: "" });
-    setIsSubmitting(false);
+
+    try {
+      // Prepare the data for Web3Forms
+      const submissionData = new FormData();
+      submissionData.append("access_key", "96b000b2-60cb-4607-8699-72a7e547c7da");
+      submissionData.append("name", formData.name);
+      submissionData.append("email", formData.email);
+      submissionData.append("company", formData.company); // Matches your 'company' field
+      submissionData.append("message", formData.message);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submissionData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast({
+          title: "Transmission Received",
+          description: "Data packet successfully sent. Response scheduled within 24 hours.",
+        });
+        setFormData({ name: "", email: "", company: "", message: "" });
+      } else {
+        throw new Error("Submission failed");
+      }
+    } catch (error) {
+      toast({
+        title: "Link Interrupted",
+        description: "Communication failed. Please check your connection or email us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -48,7 +76,6 @@ export default function ContactPage() {
 
   return (
     <Layout>
-      {/* 1. FIXED CUTTING: Changed min-h-screen to h-full min-h-screen & removed solid bg */}
       <div className="h-full min-h-screen bg-transparent text-slate-300 pb-20">
         
         {/* --- HERO: UPLINK STATUS --- */}
@@ -64,7 +91,6 @@ export default function ContactPage() {
                 Communication_Channel_Secure
               </motion.div>
               
-              {/* 2. COLOR UPDATE: Using Electric Cyan for the Heading accent */}
               <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none mb-8 uppercase">
                 Let's Build Something <br />
                 <span className="text-primary italic">Brilliant</span>
@@ -89,7 +115,6 @@ export default function ContactPage() {
                 <div className="relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-b from-primary/20 to-transparent rounded-2xl blur opacity-50 group-hover:opacity-100 transition duration-1000" />
                   
-                  {/* 3. GLASSMORPHISM: Using semi-transparent background to show grid */}
                   <div className="relative p-8 md:p-12 rounded-2xl bg-[#020202]/60 backdrop-blur-md border border-white/10 shadow-2xl">
                     <div className="flex justify-between items-center mb-10 border-b border-white/5 pb-6">
                        <div>
@@ -178,7 +203,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* --- SIDEBAR --- */}
+              {/* --- SIDEBAR (KEPT) --- */}
               <div className="lg:col-span-5 order-1 lg:order-2 space-y-8">
                 <div className="space-y-10">
                   <h2 className="text-3xl font-bold text-white tracking-tight">
@@ -187,7 +212,7 @@ export default function ContactPage() {
                   
                   <div className="space-y-8">
                     {[
-                      { icon: Mail, title: "Email Us Directly", detail: "nexegent3@gmail.com", isLink: true },
+                      { icon: Mail, title: "Email Us Directly", detail: "nexeagent@gmail.com", isLink: true },
                       { icon: Clock, title: "Response Time", detail: "Latency: < 24 Hours", isLink: false },
                       { icon: MapPin, title: "Global Reach", detail: "Distributed Network", isLink: false }
                     ].map((item, i) => (
@@ -212,7 +237,7 @@ export default function ContactPage() {
 
                 <div className="relative p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 overflow-hidden group">
                   <div className="absolute top-0 right-0 p-4 opacity-10">
-                    <Sparkles size={60} className="text-primary" />
+                    <span className="text-primary"><Sparkles size={60} /></span>
                   </div>
                   <div className="relative z-10">
                     <h3 className="text-xl font-black text-white uppercase tracking-tight mb-3 italic">Get a Free AI Audit</h3>
@@ -231,14 +256,13 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* --- FOOTER BANNER --- */}
+        {/* --- FOOTER BANNER (KEPT) --- */}
         <section className="py-24 border-t border-white/5">
           <div className="container mx-auto px-6 text-center">
             <motion.div 
               whileInView={{ opacity: [0, 1], y: [20, 0] }}
               className="max-w-3xl mx-auto space-y-6"
             >
-              {/* 4. COLOR UPDATE: Applying Electric Cyan accent */}
               <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase">
                 The Future Starts With a <span className="text-primary italic">Single Message</span>
               </h2>

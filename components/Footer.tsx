@@ -51,13 +51,13 @@ const Footer = () => {
                 Connectivity_Established
               </div>
               <a
-                href="mailto:nexegent3@gmail.com"
+                href="mailto:nexeagent@gmail.com"
                 className="group flex items-center gap-3 text-slate-300 hover:text-primary transition-colors duration-300 font-mono text-sm"
               >
                 <div className="w-8 h-8 rounded border border-white/5 flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary/30 transition-all">
                   <Mail size={14} />
                 </div>
-                nexegent3@gmail.com
+                nexeagent@gmail.com
               </a>
             </div>
           </div>
